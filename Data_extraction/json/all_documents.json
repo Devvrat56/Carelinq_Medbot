@@ -1,0 +1,503 @@
+{
+  "generated_at": "2026-06-14T05:11:55.745190Z",
+  "documents": [
+    {
+      "filename": "05.31.1_Pathology_of_the_Breast_.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/05_31_1_Pathology_of_the_Breast_.json",
+      "num_pages": 107,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/05.31.1_Pathology_of_the_Breast_.pdf"
+    },
+    {
+      "filename": "0c50efd2439df913b620ab71aa316087.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/0c50efd2439df913b620ab71aa316087.json",
+      "num_pages": 29,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/0c50efd2439df913b620ab71aa316087.pdf"
+    },
+    {
+      "filename": "11421 Breast Cancer Patient Education.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/11421_Breast_Cancer_Patient_Education.json",
+      "num_pages": 16,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/11421 Breast Cancer Patient Education.pdf"
+    },
+    {
+      "filename": "118968_Chapter_1-Introduction.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/118968_Chapter_1-Introduction.json",
+      "num_pages": 21,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/118968_Chapter_1-Introduction.pdf"
+    },
+    {
+      "filename": "12.2021_AthasG_BreastCA.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/12_2021_AthasG_BreastCA.json",
+      "num_pages": 94,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/12.2021_AthasG_BreastCA.pdf"
+    },
+    {
+      "filename": "1728776077.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/1728776077.json",
+      "num_pages": 44,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/1728776077.pdf"
+    },
+    {
+      "filename": "20-breast-fact-sheet.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/20-breast-fact-sheet.json",
+      "num_pages": 2,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/20-breast-fact-sheet.pdf"
+    },
+    {
+      "filename": "2019_PCF_PatientGuide_012319.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/2019_PCF_PatientGuide_012319.json",
+      "num_pages": 84,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/2019_PCF_PatientGuide_012319.pdf"
+    },
+    {
+      "filename": "4-american-cancer-society-breast-cancer-early-detection-and-diagnosis.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/4-american-cancer-society-breast-cancer-early-detection-and-diagnosis.json",
+      "num_pages": 73,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/4-american-cancer-society-breast-cancer-early-detection-and-diagnosis.pdf"
+    },
+    {
+      "filename": "8577.00.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/8577_00.json",
+      "num_pages": 56,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/8577.00.pdf"
+    },
+    {
+      "filename": "9781785045417-sample.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/9781785045417-sample.json",
+      "num_pages": 32,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/9781785045417-sample.pdf"
+    },
+    {
+      "filename": "Booklet-a-guide-for-people-with-prostate-cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Booklet-a-guide-for-people-with-prostate-cancer.json",
+      "num_pages": 84,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Booklet-a-guide-for-people-with-prostate-cancer.pdf"
+    },
+    {
+      "filename": "Breast Anatomy.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast_Anatomy.json",
+      "num_pages": 137,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast Anatomy.pdf"
+    },
+    {
+      "filename": "Breast Cancer - What you need to know (2020).pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast_Cancer_-_What_you_need_to_know__2020_.json",
+      "num_pages": 2,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast Cancer - What you need to know (2020).pdf"
+    },
+    {
+      "filename": "Breast Cancer Resource Book.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast_Cancer_Resource_Book.json",
+      "num_pages": 22,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast Cancer Resource Book.pdf"
+    },
+    {
+      "filename": "Breast Cancer What Every Woman Should Know.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast_Cancer_What_Every_Woman_Should_Know.json",
+      "num_pages": 32,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast Cancer What Every Woman Should Know.pdf"
+    },
+    {
+      "filename": "Breast Cancer and You_ENG_edit_web.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast_Cancer_and_You_ENG_edit_web.json",
+      "num_pages": 124,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast Cancer and You_ENG_edit_web.pdf"
+    },
+    {
+      "filename": "Breast Cancer from Different Clinical-4672.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast_Cancer_from_Different_Clinical-4672.json",
+      "num_pages": 8,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast Cancer from Different Clinical-4672.pdf"
+    },
+    {
+      "filename": "Breast Cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast_Cancer.json",
+      "num_pages": 5,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast Cancer.pdf"
+    },
+    {
+      "filename": "Breast-Cancer-411-2022.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast-Cancer-411-2022.json",
+      "num_pages": 16,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast-Cancer-411-2022.pdf"
+    },
+    {
+      "filename": "Breast-Cancer-Brochure.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast-Cancer-Brochure.json",
+      "num_pages": 16,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast-Cancer-Brochure.pdf"
+    },
+    {
+      "filename": "Breast-Cancer-English.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast-Cancer-English.json",
+      "num_pages": 2,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast-Cancer-English.pdf"
+    },
+    {
+      "filename": "Breast-Cancer-Glossary.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast-Cancer-Glossary.json",
+      "num_pages": 5,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast-Cancer-Glossary.pdf"
+    },
+    {
+      "filename": "Breast-Cancer-Pdf-2010E.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast-Cancer-Pdf-2010E.json",
+      "num_pages": 61,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast-Cancer-Pdf-2010E.pdf"
+    },
+    {
+      "filename": "Breast-Cancer-and-You-EN.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast-Cancer-and-You-EN.json",
+      "num_pages": 114,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast-Cancer-and-You-EN.pdf"
+    },
+    {
+      "filename": "BreastCancerFact.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/BreastCancerFact.json",
+      "num_pages": 2,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/BreastCancerFact.pdf"
+    },
+    {
+      "filename": "BreastHealth_201905.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/BreastHealth_201905.json",
+      "num_pages": 128,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/BreastHealth_201905.pdf"
+    },
+    {
+      "filename": "Breast_Cancer_Information_Sheet_for_BHPs_Version_3.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast_Cancer_Information_Sheet_for_BHPs_Version_3.json",
+      "num_pages": 3,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast_Cancer_Information_Sheet_for_BHPs_Version_3.pdf"
+    },
+    {
+      "filename": "Breast_cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Breast_cancer.json",
+      "num_pages": 104,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Breast_cancer.pdf"
+    },
+    {
+      "filename": "CARCINOMA   BREAST  Dr_S_Floret.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/CARCINOMA___BREAST__Dr_S_Floret.json",
+      "num_pages": 92,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/CARCINOMA   BREAST  Dr_S_Floret.pdf"
+    },
+    {
+      "filename": "CSOC-PH-Breast-Cancer-v009.1.12142021.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/CSOC-PH-Breast-Cancer-v009_1_12142021.json",
+      "num_pages": 1,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/CSOC-PH-Breast-Cancer-v009.1.12142021.pdf"
+    },
+    {
+      "filename": "Cancer-Society-Booklet-a-guide-for-people-with-breast-cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Cancer-Society-Booklet-a-guide-for-people-with-breast-cancer.json",
+      "num_pages": 100,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Cancer-Society-Booklet-a-guide-for-people-with-breast-cancer.pdf"
+    },
+    {
+      "filename": "Comprehensive breast care book new 2021 new 03-18.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Comprehensive_breast_care_book_new_2021_new_03-18.json",
+      "num_pages": 122,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Comprehensive breast care book new 2021 new 03-18.pdf"
+    },
+    {
+      "filename": "DOH-Breast-Cancer-Guidelines-Final.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/DOH-Breast-Cancer-Guidelines-Final.json",
+      "num_pages": 123,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/DOH-Breast-Cancer-Guidelines-Final.pdf"
+    },
+    {
+      "filename": "ESR_Modern_eBook_11.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/ESR_Modern_eBook_11.json",
+      "num_pages": 192,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/ESR_Modern_eBook_11.pdf"
+    },
+    {
+      "filename": "FSAC_Breast_Cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/FSAC_Breast_Cancer.json",
+      "num_pages": 20,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/FSAC_Breast_Cancer.pdf"
+    },
+    {
+      "filename": "Fiona Armitage.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Fiona_Armitage.json",
+      "num_pages": 45,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Fiona Armitage.pdf"
+    },
+    {
+      "filename": "HNFE-980.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/HNFE-980.json",
+      "num_pages": 6,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/HNFE-980.pdf"
+    },
+    {
+      "filename": "Health-Awareness-Calendar-for-2026-Final.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Health-Awareness-Calendar-for-2026-Final.json",
+      "num_pages": 7,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Health-Awareness-Calendar-for-2026-Final.pdf"
+    },
+    {
+      "filename": "L-0024194122-pdf.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/L-0024194122-pdf.json",
+      "num_pages": 29,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/L-0024194122-pdf.pdf"
+    },
+    {
+      "filename": "MAC11616+E13+Understanding+breast+cancer+Interactive+PDF.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/MAC11616_E13_Understanding_breast_cancer_Interactive_PDF.json",
+      "num_pages": 155,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/MAC11616+E13+Understanding+breast+cancer+Interactive+PDF.pdf"
+    },
+    {
+      "filename": "Metastatic_Breast_Cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Metastatic_Breast_Cancer.json",
+      "num_pages": 76,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Metastatic_Breast_Cancer.pdf"
+    },
+    {
+      "filename": "Patient-Education-Breast-Cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Patient-Education-Breast-Cancer.json",
+      "num_pages": 2,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Patient-Education-Breast-Cancer.pdf"
+    },
+    {
+      "filename": "Prostate-Cancer-Booklet_en.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Prostate-Cancer-Booklet_en.json",
+      "num_pages": 52,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Prostate-Cancer-Booklet_en.pdf"
+    },
+    {
+      "filename": "ProstateBook2.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/ProstateBook2.json",
+      "num_pages": 184,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/ProstateBook2.pdf"
+    },
+    {
+      "filename": "UICC_Prevention_Risk_Factors_FA.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/UICC_Prevention_Risk_Factors_FA.json",
+      "num_pages": 12,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/UICC_Prevention_Risk_Factors_FA.pdf"
+    },
+    {
+      "filename": "Uc-pub-Breast-CAN-729-web-lo-res_Jul-2018-2.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Uc-pub-Breast-CAN-729-web-lo-res_Jul-2018-2.json",
+      "num_pages": 76,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Uc-pub-Breast-CAN-729-web-lo-res_Jul-2018-2.pdf"
+    },
+    {
+      "filename": "Understanding_Breast_Changes_2024 FINAL.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/Understanding_Breast_Changes_2024_FINAL.json",
+      "num_pages": 22,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/Understanding_Breast_Changes_2024 FINAL.pdf"
+    },
+    {
+      "filename": "V6 Ch3 Breast Cancer ANDERSON.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/V6_Ch3_Breast_Cancer_ANDERSON.json",
+      "num_pages": 57,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/V6 Ch3 Breast Cancer ANDERSON.pdf"
+    },
+    {
+      "filename": "an-introduction-to-breast-cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/an-introduction-to-breast-cancer.json",
+      "num_pages": 7,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/an-introduction-to-breast-cancer.pdf"
+    },
+    {
+      "filename": "azu_etd_hr_2021_0242_sip1_m.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/azu_etd_hr_2021_0242_sip1_m.json",
+      "num_pages": 36,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/azu_etd_hr_2021_0242_sip1_m.pdf"
+    },
+    {
+      "filename": "breast 4.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast_4.json",
+      "num_pages": 43,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast 4.pdf"
+    },
+    {
+      "filename": "breast cancer (1).pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast_cancer__1_.json",
+      "num_pages": 8,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast cancer (1).pdf"
+    },
+    {
+      "filename": "breast-cancer (1).pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast-cancer__1_.json",
+      "num_pages": 7,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast-cancer (1).pdf"
+    },
+    {
+      "filename": "breast-cancer-eng.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast-cancer-eng.json",
+      "num_pages": 44,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast-cancer-eng.pdf"
+    },
+    {
+      "filename": "breast-cancer-information-leaflet-patientcouk.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast-cancer-information-leaflet-patientcouk.json",
+      "num_pages": 9,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast-cancer-information-leaflet-patientcouk.pdf"
+    },
+    {
+      "filename": "breast-cancer-surgery-handbook.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast-cancer-surgery-handbook.json",
+      "num_pages": 136,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast-cancer-surgery-handbook.pdf"
+    },
+    {
+      "filename": "breast-cancer-understanding-the-disease-and-its-impact.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast-cancer-understanding-the-disease-and-its-impact.json",
+      "num_pages": 2,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast-cancer-understanding-the-disease-and-its-impact.pdf"
+    },
+    {
+      "filename": "breast-cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast-cancer.json",
+      "num_pages": 48,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast-cancer.pdf"
+    },
+    {
+      "filename": "breast-invasive-patient.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast-invasive-patient.json",
+      "num_pages": 86,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast-invasive-patient.pdf"
+    },
+    {
+      "filename": "breast.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast.json",
+      "num_pages": 233,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast.pdf"
+    },
+    {
+      "filename": "breast_cancer_resource_guide.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breast_cancer_resource_guide.json",
+      "num_pages": 63,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breast_cancer_resource_guide.pdf"
+    },
+    {
+      "filename": "breastcanceratlas.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breastcanceratlas.json",
+      "num_pages": 71,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breastcanceratlas.pdf"
+    },
+    {
+      "filename": "breastcancerscreening-patient.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/breastcancerscreening-patient.json",
+      "num_pages": 52,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/breastcancerscreening-patient.pdf"
+    },
+    {
+      "filename": "carcinoma-breast.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/carcinoma-breast.json",
+      "num_pages": 6,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/carcinoma-breast.pdf"
+    },
+    {
+      "filename": "chap-25_kantelhardt.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/chap-25_kantelhardt.json",
+      "num_pages": 13,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/chap-25_kantelhardt.pdf"
+    },
+    {
+      "filename": "curroncol-33-00203.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/curroncol-33-00203.json",
+      "num_pages": 10,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/curroncol-33-00203.pdf"
+    },
+    {
+      "filename": "dsa510.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/dsa510.json",
+      "num_pages": 22,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/dsa510.pdf"
+    },
+    {
+      "filename": "dsa696.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/dsa696.json",
+      "num_pages": 57,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/dsa696.pdf"
+    },
+    {
+      "filename": "dsa697.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/dsa697.json",
+      "num_pages": 57,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/dsa697.pdf"
+    },
+    {
+      "filename": "early-and-locally-advanced-breast-cancer-diagnosis-and-management-pdf-66141532913605.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/early-and-locally-advanced-breast-cancer-diagnosis-and-management-pdf-66141532913605.json",
+      "num_pages": 110,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/early-and-locally-advanced-breast-cancer-diagnosis-and-management-pdf-66141532913605.pdf"
+    },
+    {
+      "filename": "guidelines-for-the-management-of-breast-cancer-v1.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/guidelines-for-the-management-of-breast-cancer-v1.json",
+      "num_pages": 47,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/guidelines-for-the-management-of-breast-cancer-v1.pdf"
+    },
+    {
+      "filename": "localised-prostate-cancer-a-guide-for-men-and-thier-families.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/localised-prostate-cancer-a-guide-for-men-and-thier-families.json",
+      "num_pages": 103,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/localised-prostate-cancer-a-guide-for-men-and-thier-families.pdf"
+    },
+    {
+      "filename": "mh-715002-aa-life-after-prostate-cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/mh-715002-aa-life-after-prostate-cancer.json",
+      "num_pages": 15,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/mh-715002-aa-life-after-prostate-cancer.pdf"
+    },
+    {
+      "filename": "patient-guide-to-breast-cancer-surgery-and-treatment.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/patient-guide-to-breast-cancer-surgery-and-treatment.json",
+      "num_pages": 25,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/patient-guide-to-breast-cancer-surgery-and-treatment.pdf"
+    },
+    {
+      "filename": "prostate-cancer-what-all-men-should-know.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/prostate-cancer-what-all-men-should-know.json",
+      "num_pages": 32,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/prostate-cancer-what-all-men-should-know.pdf"
+    },
+    {
+      "filename": "prostate-cancer.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/prostate-cancer.json",
+      "num_pages": 15,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/prostate-cancer.pdf"
+    },
+    {
+      "filename": "s41572-019-0111-2.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/s41572-019-0111-2.json",
+      "num_pages": 31,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/s41572-019-0111-2.pdf"
+    },
+    {
+      "filename": "stage_iv_breast-patient.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/stage_iv_breast-patient.json",
+      "num_pages": 66,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/stage_iv_breast-patient.pdf"
+    },
+    {
+      "filename": "the-breast-reconstruction-guidebook.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/the-breast-reconstruction-guidebook.json",
+      "num_pages": 316,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/the-breast-reconstruction-guidebook.pdf"
+    },
+    {
+      "filename": "understanding-breast-cancer-cancer-council.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/understanding-breast-cancer-cancer-council.json",
+      "num_pages": 76,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/understanding-breast-cancer-cancer-council.pdf"
+    },
+    {
+      "filename": "understanding-breast-cancer-causes-symptoms-diagnosis-and-treatment.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/understanding-breast-cancer-causes-symptoms-diagnosis-and-treatment.json",
+      "num_pages": 2,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/understanding-breast-cancer-causes-symptoms-diagnosis-and-treatment.pdf"
+    },
+    {
+      "filename": "you-can-beat-prostate-cancer-audiobook-images.pdf",
+      "json": "/home/softsensor/Documents/Ai_project/cha/jsoncha/json/you-can-beat-prostate-cancer-audiobook-images.json",
+      "num_pages": 52,
+      "absolute_path": "/home/softsensor/Documents/Ai_project/cha/you-can-beat-prostate-cancer-audiobook-images.pdf"
+    }
+  ]
+}

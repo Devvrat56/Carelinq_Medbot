@@ -1,0 +1,37 @@
+# Core Frameworks
+fastapi==0.115.0
+uvicorn==0.32.0
+python-multipart==0.0.12
+pydantic>=2.0.0
+python-dotenv==1.0.1
+
+# LangChain & LLM Integrations
+langchain>=0.3.3
+langchain-core>=0.3.10
+langchain-community>=0.3.2
+langchain-openai==0.2.2
+langchain-groq==0.2.0
+
+# Vector Database & Embeddings
+chromadb==0.5.15
+langchain-chroma==0.1.4
+langchain-huggingface==0.1.0
+sentence-transformers==3.2.0
+
+# Document Processing & OCR
+pypdf==5.0.1
+pdf2image==1.17.0
+pytesseract==0.3.13
+Pillow==11.0.0
+
+# Knowledge Graph & Entity Extraction
+networkx==3.4.2
+spacy>=3.7.0,<3.8.0
+scispacy==0.5.4
+
+# SciSpacy Models (Install manually or via script if pip struggles with URL directly)
+# https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_sm-0.5.4.tar.gz
+
+# Frontend UI
+streamlit==1.32.0
+requests==2.31.0
