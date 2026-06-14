@@ -1,106 +1,88 @@
-# Medical Chatbot App - Full Documentation
+# Carelinq MedBot - Technical Documentation
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Architecture Overview](#architecture-overview)
-3. [Data Extraction Module](#data-extraction-module)
-4. [Knowledge Graph Module](#knowledge-graph-module)
-5. [Retriever Module](#retriever-module)
-6. [Patient Memory & Report Analysis](#patient-memory--report-analysis)
-7. [Installation & Setup](#installation--setup)
-
----
-
-## Introduction
-The **Medical Chatbot App** is a state-of-the-art hybrid Retrieval-Augmented Generation (RAG) and Knowledge-Augmented Generation (KAG) platform. It allows users to query complex medical topics using both unstructured text embeddings and structured knowledge graphs, while maintaining a robust memory of patient history and lab reports.
+1. [Architecture Overview](#architecture-overview)
+2. [Orchestration Layer (`main.py`)](#orchestration-layer)
+3. [Frontend Interface (`frontend/`)](#frontend-interface)
+4. [Data Extraction Module (`Data_extraction/`)](#data-extraction-module)
+5. [Knowledge Graph Module (`knowledge_graph/`)](#knowledge-graph-module)
+6. [Data Safety & Metrics (`Data_safety/`)](#data-safety--metrics)
+7. [Retriever & Memory (`retriever/`)](#retriever--memory)
+8. [Evaluation Framework (`evaluation/`)](#evaluation-framework)
 
 ---
 
 ## Architecture Overview
-The system is divided into three primary pipelines:
-1. **Offline Data Ingestion**: Parses PDFs and text, generates embeddings, and saves them to `ChromaDB`.
-2. **Knowledge Graph Processing**: Extracts explicit medical relationships (e.g., `Disease -> TREATED_WITH -> Medication`) using NLP (SciSpacy) and stores them as an accessible mathematical graph (NetworkX).
-3. **Hybrid Retrieval Pipeline (KAG + RAG)**: Upon receiving a user query, it simultaneously retrieves semantic matches from the vector database and factual relationships from the graph, re-ranks the semantic matches using a Cross-Encoder, and synthesizes the final context into an LLM prompt.
+The Carelinq MedBot is a production-grade, hybrid RAG (Retrieval-Augmented Generation) and KAG (Knowledge-Augmented Generation) clinical consultation platform. It seamlessly ingests unstructured clinical guidelines and multimodal patient reports, mapping them to a persistent mathematical Knowledge Graph, and surfaces answers dynamically using rigorous safety and hallucination heuristics.
+
+---
+
+## Orchestration Layer
+
+### `main.py`
+The master orchestrator defining the entry point for the application. It features a Dual-Interface architecture:
+- **FastAPI Backend (`uvicorn main:app`)**: Exposes REST endpoints (`/chat`, `/upload-report`, `/patient/{id}`) for production environments. Features CORS middleware to securely serve decoupled clients.
+- **Interactive CLI (`python main.py`)**: A developer terminal interface designed for offline testing and debugging without needing to launch a web server.
+
+---
+
+## Frontend Interface
+
+### `frontend/streamlit_app.py`
+A completely decoupled React-based client (via Streamlit) that hooks into the FastAPI backend.
+- **State Management**: Real-time synchronization of `patient_id` state against the SQLite backend to instantly populate historical `chat_history`.
+- **Multimodal Ingestion**: A drag-and-drop sidebar widget that posts PDFs/Images directly to the OCR/Extraction pipeline endpoint.
+- **Metric Formatting**: Natively parses the backend JSON to elegantly display *Confidence Scores*, *Safety Checkmarks*, and *Grounded Footnotes*.
 
 ---
 
 ## Data Extraction Module
-Located in `Data_extraction/`. Responsible for translating raw medical text into dense vector embeddings.
+Located in `Data_extraction/`. Handles bulk ingestion of clinical guidelines.
 
 ### Core Scripts:
-- **`document_loader.py`**: Interacts with the filesystem to load various unstructured documents (PDFs, text files). Converts raw files into standardized LangChain `Document` objects.
-- **`text_splitter.py`**: Employs `RecursiveCharacterTextSplitter` to divide massive documents into optimal chunk sizes (typically 500-1000 tokens) with appropriate overlap. This ensures contexts fit within the LLM's context window.
-- **`vector_store.py`**: The bridge to `ChromaDB`. It instantiates the embedding model (e.g., HuggingFace embeddings or OpenAI) and provides methods to `add_documents` or perform similarity searches.
-- **`ingestion.py`**: The entrypoint script. Runs the entire pipeline sequentially: Load -> Split -> Embed -> Store.
+- **`document_loader.py`**: Interacts with the filesystem to load unstructured documents and converts them to LangChain `Document` objects.
+- **`text_splitter.py`**: Optimizes chunk configurations for the `all-MiniLM-L6-v2` embedding limits using `RecursiveCharacterTextSplitter`.
+- **`vector_store.py`**: Manages the local `ChromaDB` instance (`chroma_db`).
+- **`ingestion.py`**: The offline batch pipeline script: Load -> Split -> Embed -> Store.
 
 ---
 
 ## Knowledge Graph Module
-Located in `knowledge_graph/`. Extracts exact medical facts to ground the LLM responses and prevent clinical hallucinations.
+Located in `knowledge_graph/`. Enforces deterministic factual accuracy by mapping clinical documents to strict network graphs.
 
 ### Core Scripts:
-- **`entity_extractor.py`**: Uses `scispacy` (e.g., `en_core_sci_sm` model) to perform Named Entity Recognition (NER). It identifies specific medical entities (Symptoms, Drugs, Diseases) and infers relationships based on linguistic patterns.
-- **`graph_builder.py`**: Takes the extracted triples (Subject, Predicate, Object) and uses `NetworkX` to construct a directed graph. Nodes represent entities; edges represent the relationship types.
-- **`graph_retriever.py`**: Provides the `GraphRetriever` class. Given a natural language query, it extracts the key entities from the query, searches the graph for the matching nodes, and extracts the 1-hop or 2-hop neighborhood to provide exact factual context.
+- **`entity_extractor.py`**: Utilizes `scispacy` (`en_core_sci_sm`) to perform NER, extracting explicit subject-predicate-object triples.
+- **`graph_builder.py`**: Translates triples into a persistent `NetworkX` directed graph object.
+- **`graph_retriever.py`**: Executes 1-hop and 2-hop neighborhood searches based on entities isolated from the user's live query.
+- **`kg_updater.py`**: A dynamic pipeline that automatically injects new structured entities (extracted from uploaded patient reports) back into the active Knowledge Graph.
 
 ---
 
-## Retriever Module
-Located in `retriever/`. This is the execution engine of the chatbot.
+## Data Safety & Metrics
+Located in `Data_safety/`. The heuristic layer enforcing clinical rigor.
 
 ### Core Scripts:
-- **`kag_rag_pipeline.py`**: Defines the `KAGRAGPipeline` class. 
-  - *Methods*: `generate_response()`
-  - *Logic*: Calls the Graph Retriever and Vector Retriever in parallel. Merges both contexts into a single meta-prompt and queries the LLM.
-- **`retrieve.py`**: Defines the `MedicalRetriever` class. Interfaces with `ChromaDB` to fetch semantically relevant chunks. Uses Maximum Marginal Relevance (MMR) or standard Similarity Search.
-- **`reranker.py`**: Defines `BGEReranker` (or `MedicalReranker`). Uses a Cross-Encoder (`BAAI/bge-reranker-base`) to score the retrieved document chunks against the user query. Documents with low relevancy are filtered out, drastically improving RAG precision.
-- **`llm.py`**: Standardizes the initialization of Language Models (OpenAI, Groq) to be injected into the various pipelines.
-- **`prompt.py`**: Contains the `SYSTEM_PROMPT` and other critical prompt templates that instruct the LLM on how to behave like a compassionate, highly technical clinical assistant.
-- **`config.py`**: Exposes configuration constants like `CHROMA_PATH` and `EMBEDDING_MODEL`.
+- **`confidence.py`**: Blends traditional `Chroma` retriever distance metrics with the logits emitted from the `bge-reranker-base` cross-encoder to calculate a global percentage confidence score.
+- **`hallucination_checker.py`**: A lightweight lexical overlap engine verifying that the LLM's final generated answer is strictly grounded in the retrieved context chunks.
+- **`safety.py`**: An upfront sanitization filter rejecting out-of-bounds, non-medical, or high-risk queries.
 
 ---
 
-## Patient Memory & Report Analysis
-Integrated within the retriever but heavily focused on specific patient workflows.
+## Retriever & Memory
+Located in `retriever/`. The execution engine handling memory and LLM querying.
 
-- **`memory.py`**: Uses Python's `sqlite3` to maintain persistent databases (`clinic_test.db`, `temp_db`). Features include:
-  - `upsert_patient_profile()`: Saves demographics, conditions, and allergies.
-  - `add_message()` / `get_chat_history()`: Tracks the conversation history natively so the bot remembers past turns.
-- **`report_analyzer.py`**: The OCR and structured output layer.
-  - Can natively read PDF metadata via `pypdf`.
-  - Automatically falls back to `pytesseract` and `pdf2image` to perform Optical Character Recognition on faxes or scanned documents.
-  - Utilizes LangChain's `.with_structured_output()` to force the LLM to output a strict JSON schema containing: `patient_name`, `report_date`, `extracted_entities`, and a `patient_explanation`.
+### Core Scripts:
+- **`kag_rag_pipeline.py`**: The central aggregation logic. Parallelizes KAG and RAG fetching, injects patient memory, and packages the result for `main.py`.
+- **`retrieve.py` / `reranker.py`**: The core RAG mechanics (Vector Search + Cross-Encoder Reranking).
+- **`memory.py`**: Exposes the `PatientMemoryManager`. It defines a robust SQLite schema managing the `patients` table, `reports` tracking, and sequential `chat_history`.
+- **`report_analyzer.py`**: Features multi-modal fallbacks (`pypdf` -> `pytesseract` OCR). It uses `Langchain`'s `.with_structured_output()` and strict Pydantic schemas to ensure parsed reports map precisely to clinical structures (e.g. Prostate & Breast Cancer matrices).
+- **`citation_manager.py`**: Maps generated text spans back to their source document URIs.
 
 ---
 
-## Installation & Setup
+## Evaluation Framework
+Located in `evaluation/`. The framework for automated CI/CD metric validation.
 
-### Prerequisites
-1. **Python 3.9+** is required.
-2. Ensure you have **Tesseract OCR** and **Poppler** installed on your OS for the OCR features.
-
-### Python Dependencies
-```bash
-# Core AI and Retrieval
-pip install langchain langchain-openai langchain-groq sentence-transformers chromadb
-
-# Knowledge Graph
-pip install networkx spacy scispacy
-pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_sm-0.5.4.tar.gz
-
-# Document Processing
-pip install pypdf pytesseract pdf2image
-```
-
-### Environment Variables
-Create a `.env` in the root directory:
-```env
-OPENAI_API_KEY=sk-...
-GROQ_API_KEY=gsk_...
-```
-
-### Running the App
-1. **Build the Database**: Run `python Data_extraction/ingestion.py` to embed your local files.
-2. **Analyze a Lab Report**: Run `python retriever/report_analyzer.py` to OCR a PDF and save it to the SQLite patient memory.
-3. **Query the Graph**: Run `python knowledge_graph/graph_retriever.py` to test relationship extraction.
-4. **Chat Interface**: Import and instantiate `KAGRAGPipeline` from `kag_rag_pipeline.py` to begin passing user queries.
+### Core Scripts:
+- **`ragas_eval.py`**: Integrates the RAGAS framework to run automated tests measuring *Faithfulness* (Are facts invented?) and *Answer Relevance* (Does it answer the prompt directly?).
+- **`test_queries.json`**: Standardized benchmarking dataset.

@@ -1,76 +1,63 @@
-# Medical Chatbot App
+<h1 align="center">Carelinq MedBot</h1>
 
-A sophisticated Retrieval-Augmented Generation (RAG) chatbot designed specifically for the medical domain. This system enables intelligent parsing of medical records, robust tracking of patient profiles, and context-aware clinical reasoning.
+<p align="center">
+  <strong>A Production-Grade Medical Consultation Chatbot powered by Hybrid KAG + RAG Architecture.</strong>
+</p>
 
-## 🚀 Features
+## Overview
 
-- **Medical Document Parsing (`report_analyzer.py`)**: 
-  - Extracts text natively from medical PDFs.
-  - Automatically falls back to OCR (`pytesseract`, `pdf2image`) for scanned images or faxes.
-  - Generates patient-friendly explanations from complex clinical terms and biomarkers using Structured LLM output.
-- **RAG Engine (`rag_pipeline.py`, `retrieve.py`, `reranker.py`)**:
-  - Employs a fully featured Retrieval-Augmented Generation pipeline.
-  - Vector retrieval capabilities through ChromaDB.
-  - Context re-ranking mechanism to bubble up the most relevant medical guidelines or past history.
-- **Patient Memory Management (`memory.py`)**:
-  - Leverages SQLite databases (`clinic_test.db`, `temp_db`) to store conversational context persistently.
-  - Maintains detailed patient profiles including demographics, prior conditions, and known allergies.
-- **Data Extraction & Prompt Management**:
-  - Custom system and chain-of-thought prompts configured explicitly for clinical settings (`prompt.py`).
-  - Automated configurations via `.env` files and `config.py`.
+The Carelinq MedBot is an advanced clinical assistant designed to analyze patient reports, query rigorous medical guidelines, and provide highly grounded responses. It combines the deterministic accuracy of a **Knowledge Graph (KAG)** with the semantic flexibility of a **Vector Database (RAG)**, wrapped entirely in a robust Safety and Memory orchestration layer.
 
-## 🛠️ Requirements & Setup
+### Key Features
+- 🛡️ **Safety & Metrics**: Built-in Confidence Scoring, Lexical Hallucination Checking, and query sanitization.
+- 🧠 **Persistent Patient Memory**: SQLite-backed patient tracking holding comprehensive histories, clinical profiles, and prior chat turns.
+- 📄 **Multimodal Report Ingestion**: Upload a PDF or Image (with Tesseract OCR fallback), extract data strictly using Pydantic Schemas, and auto-populate the Knowledge Graph.
+- 🚀 **Dual Interface**: Fully decoupled `FastAPI` REST backend and a beautiful interactive `Streamlit` frontend.
 
-This project utilizes `langchain`, `pypdf`, `pytesseract`, and `langchain-openai`. To set up your local environment:
+---
 
-1. **Install Python Dependencies:**
-   ```bash
-   pip install pypdf pytesseract pdf2image langchain-openai
-   # Also ensure you install dependencies required by your specific RAG/Retrieval setup (e.g. chromadb, sentence-transformers, etc.)
-   ```
+## 🛠️ Installation & Setup
 
-2. **System Dependencies:**
-   - **Tesseract OCR**: Required for parsing image-based PDFs. 
-     - Ubuntu/Debian: `sudo apt-get install tesseract-ocr`
-     - Mac/Homebrew: `brew install tesseract`
-   - **Poppler**: Required for `pdf2image` to rasterize PDFs.
-     - Ubuntu/Debian: `sudo apt-get install poppler-utils`
-     - Mac/Homebrew: `brew install poppler`
-
-3. **Environment Variables:**
-   Create a `.env` file at the root of `Chatbot_app` with your necessary API keys:
-   ```env
-   OPENAI_API_KEY="your-openai-api-key"
-   GROQ_API_KEY="your-groq-api-key" # If utilizing Groq models
-   ```
-
-## 🏗️ Project Structure
-
+1. **Prerequisites**: Ensure you have Python 3.9+ and system-level `tesseract-ocr` installed.
+2. **Install Dependencies**:
+```bash
+pip install -r requirements.txt
 ```
-Chatbot_app/
-├── .env                    # Secret API keys and environment variables
-├── chroma_db/              # Persistent vector store database
-├── temp_db/                # Temporary/cache databases (like SQLite memory)
-├── Data_extraction/        # Raw data handling and preprocessing scripts
-└── retriever/              # Core logic for the Chatbot
-    ├── config.py           # Configuration variables and loaders
-    ├── memory.py           # SQLite-based Patient Profile and Chat History manager
-    ├── prompt.py           # Core System Prompts and Chain-of-Thought templates
-    ├── rag_pipeline.py     # Main RAG orchestration logic
-    ├── report_analyzer.py  # OCR and Medical Report structured parsing
-    ├── reranker.py         # Advanced document re-ranking
-    └── retrieve.py         # Core Vector Database retrieval operations
+*(Note: Ensure you download the `en_core_sci_sm` scispacy model if it doesn't auto-resolve.)*
+
+3. **Configure Environment**: Create a `.env` file in the root directory:
+```env
+GROQ_API_KEY=your_actual_api_key_here
 ```
 
-## 🧠 Usage
+---
 
-1. **Upload & Analyze a Report:**
-   The `report_analyzer.py` contains a runner that showcases how to analyze an uploaded `sample_lab_result.pdf`. It will register a dummy patient, perform OCR/text extraction, and save a patient-friendly LLM explanation to the SQL memory.
-   
-   ```bash
-   cd retriever
-   python report_analyzer.py
-   ```
+## 🚀 Running the Application
 
-2. **Engaging the Chatbot:**
-   You can instantiate the `rag_pipeline.py` or the main runner to interact directly with patient histories and the Vector DB.
+Because this application utilizes a modern, decoupled architecture, you will need two terminal windows.
+
+**1. Launch the Backend API (Terminal 1)**
+```bash
+uvicorn main:app --reload
+```
+*Your FastAPI backend is now serving endpoints at `http://localhost:8000`.*
+
+**2. Launch the Streamlit Frontend (Terminal 2)**
+```bash
+streamlit run frontend/streamlit_app.py
+```
+*Your browser will automatically open the interactive clinical interface!*
+
+---
+
+## 📚 Project Architecture
+
+For a deep dive into the technical capabilities of each module, please read the [FULL_DOCUMENTATION.md](docs/FULL_DOCUMENTATION.md).
+
+- `/Data_extraction/` - Unstructured document loading and offline embedding pipelines.
+- `/Data_safety/` - Confidence scoring and hallucination heuristics.
+- `/docs/` - Technical documentation.
+- `/evaluation/` - Automated RAGAS testing frameworks.
+- `/frontend/` - Streamlit User Interface.
+- `/knowledge_graph/` - SciSpacy NER and NetworkX graph generation.
+- `/retriever/` - The orchestration logic handling LLMs, Cross-Encoders, structured output Pydantic parsers, and persistent SQLite memory.
