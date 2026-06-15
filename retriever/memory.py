@@ -30,6 +30,7 @@ class PatientMemoryManager:
                 import psycopg2
                 from psycopg2.extras import RealDictCursor
                 self.pg_conn = psycopg2.connect(self.postgres_url)
+                self.pg_conn.autocommit = True
                 logger.info("Connected to PostgreSQL for structured data.")
                 self._init_postgres()
             except Exception as e:
@@ -244,13 +245,23 @@ class PatientMemoryManager:
 
     def add_report(self, report_id: str, patient_id: str, summary: str, report_type: str, report_date: str):
         """Adds a processed report summary to the patient's record."""
+        # Normalize date to YYYY-MM-DD
+        try:
+            from datetime import datetime
+            parsed_date = datetime.strptime(report_date, "%d/%m/%Y")
+            report_date = parsed_date.strftime("%Y-%m-%d")
+        except Exception:
+            pass # Trust the LLM format if strptime fails
+        
         if self.pg_conn:
-            with self.pg_conn.cursor() as cursor:
-                cursor.execute("""
-                    INSERT INTO reports (report_id, patient_id, summary, report_type, report_date)
-                    VALUES (%s, %s, %s, %s, %s)
-                """, (report_id, patient_id, summary, report_type, report_date))
-                self.pg_conn.commit()
+            try:
+                with self.pg_conn.cursor() as cursor:
+                    cursor.execute("""
+                        INSERT INTO reports (report_id, patient_id, summary, report_type, report_date)
+                        VALUES (%s, %s, %s, %s, %s)
+                    """, (report_id, patient_id, summary, report_type, report_date))
+            except Exception as e:
+                logger.error(f"Failed to add report to Postgres: {e}")
         else:
             with self._get_sqlite_connection() as conn:
                 cursor = conn.cursor()

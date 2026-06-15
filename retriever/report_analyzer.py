@@ -34,7 +34,7 @@ class GeneralReportData(BaseModel):
 class UnifiedReportAnalysis(BaseModel):
     report_type: str = Field(description="Type of report: 'ProstateCancer', 'BreastCancer', or 'General'")
     patient_name: str = Field(description="Name of the patient if found, otherwise 'Unknown'")
-    report_date: str = Field(description="Date the lab test or medical report was generated")
+    report_date: str = Field(description="Date the lab test or medical report was generated. You MUST format this strictly as YYYY-MM-DD (e.g. 2024-10-17).")
     
     # Only one of these will be fully populated based on report_type
     prostate_data: Optional[ProstateCancerData] = None
