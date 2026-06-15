@@ -38,3 +38,7 @@ requests==2.31.0
 
 # Azure Storage (Floci Emulator)
 azure-storage-blob>=12.19.0
+
+# External Databases
+pymongo>=4.6.0
+psycopg2-binary>=2.9.9
