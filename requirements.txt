@@ -30,7 +30,7 @@ spacy>=3.7.0,<3.8.0
 scispacy==0.5.4
 
 # SciSpacy Models (Install manually or via script if pip struggles with URL directly)
-# https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_sm-0.5.4.tar.gz
+https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_sm-0.5.4.tar.gz
 
 # Frontend UI
 streamlit==1.32.0
