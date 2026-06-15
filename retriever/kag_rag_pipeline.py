@@ -14,6 +14,8 @@ from retriever.retrieve import MedicalRetriever
 from retriever.reranker import BGEReranker as MedicalReranker
 from retriever.memory import PatientMemoryManager
 from retriever.llm import get_llm
+from context import init_conversation as general_context
+from context2 import get_system_prompt as symptom_context
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -94,14 +96,16 @@ Patient Information:
 """
 
         # 3. Compile Master Prompt
-        return f"""
-You are MedBot, an AI assistant specialized in prostate cancer and breast cancer education.
+        symptom_keywords = ['pain', 'hurt', 'lump', 'bleeding', 'tired', 'fatigue', 'fever', 'sweats', 'weight', 'symptom', 'ache', 'swelling', 'nausea', 'vomit', 'cough', 'feel']
+        is_symptom = any(kw in query.lower() for kw in symptom_keywords)
+        base_prompt = symptom_context() if is_symptom else general_context
 
-Rules:
+        return f"""{base_prompt}
+
+ADDITIONAL RULES FOR THIS QUERY:
 1. Use BOTH the structured knowledge graph information and retrieved medical documents.
 2. Adapt your answer based on the Patient Information provided (e.g. referencing their PSA or Treatment if relevant).
-3. Never diagnose diseases or prescribe medications.
-4. If information is insufficient, say: "I could not find sufficient information in the medical knowledge base."
+3. If information is insufficient, say: "I could not find sufficient information in the medical knowledge base."
 
 {patient_info}
 
@@ -117,7 +121,7 @@ Retrieved Medical Context:
 User Question:
 {query}
 
-Provide a clear patient-friendly answer:
+Provide a structured and educational answer:
 """
 
     def answer(self, query, patient_id=None):

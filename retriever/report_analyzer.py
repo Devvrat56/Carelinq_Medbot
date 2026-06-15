@@ -2,10 +2,11 @@ import os
 import pypdf
 from pdf2image import convert_from_path
 import pytesseract
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
 from typing import Optional
+from context3 import get_contextualized_report_system
 
 # Define specific schemas
 class ProstateCancerData(BaseModel):
@@ -44,10 +45,10 @@ class UnifiedReportAnalysis(BaseModel):
 
 class MedicalReportAnalyzer:
     def __init__(self):
-        llm = ChatOpenAI(
-            model="gpt-4o-mini", # Note: Updated from 'groq/openai/gptt-o-mini' to valid identifier, user will provide proper key via ENV
+        llm = ChatGroq(
+            model="llama-3.3-70b-versatile",
             temperature=0.1, 
-            api_key=os.getenv("OPENAI_API_KEY") or os.getenv("GROQ_API_KEY"))
+            api_key=os.getenv("GROQ_API_KEY"))
         self.structured_llm = llm.with_structured_output(UnifiedReportAnalysis)
         
     def _extract_native_text(self, pdf_path: str) -> str:
@@ -88,8 +89,10 @@ class MedicalReportAnalyzer:
         return extracted_text
 
     def analyze_report_text(self, raw_text: str) -> UnifiedReportAnalysis:
+        system_base = get_contextualized_report_system("full")
+        sys_prompt = system_base + "\n\nCategorize the medical report into 'ProstateCancer', 'BreastCancer', or 'General'. Then populate the relevant data fields. Always generate a comforting patient_explanation summarizing the findings."
         prompt = ChatPromptTemplate.from_messages([
-            ("system", "You are an expert clinical AI assistant. Categorize the medical report into 'ProstateCancer', 'BreastCancer', or 'General'. Then populate the relevant data fields. Always generate a comforting patient_explanation summarizing the findings."),
+            ("system", sys_prompt),
             ("human", "Analyze the following raw clinical report text:\n\n{report_data}")
         ])
         chain = prompt | self.structured_llm

@@ -19,6 +19,7 @@ from retriever.memory import PatientMemoryManager
 from retriever.report_analyzer import MedicalReportAnalyzer
 from retriever.kag_rag_pipeline import KAGRAGPipeline
 from knowledge_graph.kg_updater import KnowledgeGraphUpdater
+from storage.blob_manager import BlobManager
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -42,6 +43,7 @@ hallucination_checker = HallucinationChecker()
 citation_manager = CitationManager()
 report_analyzer = MedicalReportAnalyzer()
 kg_updater = KnowledgeGraphUpdater()
+blob_manager = BlobManager()
 
 
 # --- Pydantic Models for FastAPI ---
@@ -87,8 +89,16 @@ async def upload_report(patient_id: str = Form(...), file: UploadFile = File(...
 
     temp_path = f"temp_{file.filename}"
     try:
+        # Upload to Azure Blob Storage (Floci Emulator)
+        file_bytes = await file.read()
+        try:
+            blob_manager.upload_report(file.filename, file_bytes)
+        except Exception as e:
+            logging.warning(f"Failed to upload to Azure Blob Storage (Is Floci running?): {e}")
+
+        # Write to temp file for local processing
         with open(temp_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
+            buffer.write(file_bytes)
             
         raw_text = report_analyzer.parse_file(temp_path)
         analysis = report_analyzer.analyze_report_text(raw_text)

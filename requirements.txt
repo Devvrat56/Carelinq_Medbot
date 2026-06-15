@@ -22,7 +22,7 @@ sentence-transformers==3.2.0
 pypdf==5.0.1
 pdf2image==1.17.0
 pytesseract==0.3.13
-Pillow==11.0.0
+Pillow<11.0.0
 
 # Knowledge Graph & Entity Extraction
 networkx==3.4.2
@@ -35,3 +35,6 @@ scispacy==0.5.4
 # Frontend UI
 streamlit==1.32.0
 requests==2.31.0
+
+# Azure Storage (Floci Emulator)
+azure-storage-blob>=12.19.0
