@@ -90,6 +90,34 @@ class PatientMemoryManager:
             """)
             self.pg_conn.commit()
 
+    def _ensure_pg_connection(self):
+        """Ensures the PostgreSQL connection is alive, reconnecting if necessary."""
+        if not self.postgres_url:
+            return
+            
+        reconnect_needed = False
+        if self.pg_conn is None:
+            reconnect_needed = True
+        else:
+            try:
+                import psycopg2
+                if self.pg_conn.closed != 0:
+                    reconnect_needed = True
+                else:
+                    with self.pg_conn.cursor() as cursor:
+                        cursor.execute("SELECT 1")
+            except Exception:
+                reconnect_needed = True
+                
+        if reconnect_needed:
+            try:
+                import psycopg2
+                self.pg_conn = psycopg2.connect(self.postgres_url)
+                self.pg_conn.autocommit = True
+            except Exception as e:
+                logger.warning(f"Failed to reconnect to PostgreSQL: {e}")
+                self.pg_conn = None
+
     def _init_sqlite(self):
         """Initializes local SQLite tables for patient profiles, chat history, and reports."""
         with self._get_sqlite_connection() as conn:
@@ -137,6 +165,7 @@ class PatientMemoryManager:
         """Creates or updates a clinical patient profile."""
         now = datetime.utcnow().isoformat()
         
+        self._ensure_pg_connection()
         if self.pg_conn:
             with self.pg_conn.cursor() as cursor:
                 cursor.execute("""
@@ -179,6 +208,7 @@ class PatientMemoryManager:
 
     def get_patient_context(self, patient_id: str) -> Dict[str, Any]:
         """Retrieves structured clinical background metadata for system prompts."""
+        self._ensure_pg_connection()
         if self.pg_conn:
             from psycopg2.extras import RealDictCursor
             with self.pg_conn.cursor(cursor_factory=RealDictCursor) as cursor:
@@ -253,6 +283,7 @@ class PatientMemoryManager:
         except Exception:
             pass # Trust the LLM format if strptime fails
         
+        self._ensure_pg_connection()
         if self.pg_conn:
             try:
                 with self.pg_conn.cursor() as cursor:
