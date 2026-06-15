@@ -301,3 +301,20 @@ class PatientMemoryManager:
                     VALUES (?, ?, ?, ?, ?)
                 """, (report_id, patient_id, summary, report_type, report_date))
                 conn.commit()
+
+    def get_patient_reports(self, patient_id: str) -> List[Dict[str, Any]]:
+        """Retrieves all report summaries for a specific patient."""
+        self._ensure_pg_connection()
+        if self.pg_conn:
+            from psycopg2.extras import RealDictCursor
+            with self.pg_conn.cursor(cursor_factory=RealDictCursor) as cursor:
+                cursor.execute("SELECT * FROM reports WHERE patient_id = %s ORDER BY report_date DESC", (patient_id,))
+                rows = cursor.fetchall()
+                return [dict(row) for row in rows]
+        else:
+            with self._get_sqlite_connection() as conn:
+                conn.row_factory = sqlite3.Row
+                cursor = conn.cursor()
+                cursor.execute("SELECT * FROM reports WHERE patient_id = ? ORDER BY report_date DESC", (patient_id,))
+                rows = cursor.fetchall()
+                return [dict(row) for row in rows]

@@ -16,6 +16,7 @@ from retriever.memory import PatientMemoryManager
 from retriever.llm import get_llm
 from context import init_conversation as general_context
 from context2 import get_system_prompt as symptom_context
+from context3 import get_full_context
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -75,7 +76,7 @@ class KAGRAGPipeline:
             logging.error(f"RAG Retrieval failed: {e}")
             return "", []
 
-    def build_prompt(self, query, kag_context, rag_context, chat_history, patient_context):
+    def build_prompt(self, query, kag_context, rag_context, chat_history, patient_context, patient_reports):
         # 1. Format Chat History
         history_text = "\n".join([f"{msg['role'].capitalize()}: {msg['content']}" for msg in chat_history])
         if not history_text:
@@ -95,22 +96,39 @@ Patient Information:
 - Allergies: {patient_context.get('allergies', 'N/A')}
 """
 
+        # Format Reports
+        reports_text = "No uploaded reports available."
+        if patient_reports:
+            reports_text = ""
+            for report in patient_reports:
+                reports_text += f"\n- Date: {report.get('report_date', 'N/A')} | Type: {report.get('report_type', 'N/A')}\n  Summary: {report.get('summary', 'N/A')}\n"
+
         # 3. Compile Master Prompt
         symptom_keywords = ['pain', 'hurt', 'lump', 'bleeding', 'tired', 'fatigue', 'fever', 'sweats', 'weight', 'symptom', 'ache', 'swelling', 'nausea', 'vomit', 'cough', 'feel']
         is_symptom = any(kw in query.lower() for kw in symptom_keywords)
         base_prompt = symptom_context() if is_symptom else general_context
+        
+        disease_context = get_full_context()
 
         return f"""{base_prompt}
 
 ADDITIONAL RULES FOR THIS QUERY:
 1. Use BOTH the structured knowledge graph information and retrieved medical documents.
 2. Adapt your answer based on the Patient Information provided (e.g. referencing their PSA or Treatment if relevant).
-3. If information is insufficient, say: "I could not find sufficient information in the medical knowledge base."
+3. If the user asks about an uploaded report, refer strictly to the Patient Reports section.
+4. MANDATORY CONDITION: You must evaluate if the user's query is related to medical consultation for cancer AFTER post-surgery (post-operative cancer care, recovery, complications, or post-surgical pathology). If the query is NOT related to post-surgery cancer care, you MUST refuse to answer and state: "I am specialized only in post-surgery cancer consultations. I cannot answer queries unrelated to post-operative cancer care."
+5. If information is insufficient, say: "I could not find sufficient information in the medical knowledge base or the patient's reports."
 
 {patient_info}
 
+Patient Reports:
+{reports_text}
+
 Recent Conversation:
 {history_text}
+
+Disease-Specific Knowledge Base:
+{disease_context}
 
 Knowledge Graph Information:
 {kag_context}
@@ -121,7 +139,7 @@ Retrieved Medical Context:
 User Question:
 {query}
 
-Provide a structured and educational answer:
+Provide a structured and educational answer adhering to the MANDATORY CONDITION:
 """
 
     def answer(self, query, patient_id=None):
@@ -138,9 +156,11 @@ Provide a structured and educational answer:
         # 2. Retrieve Patient Memory
         patient_context = {}
         chat_history = []
+        patient_reports = []
         if patient_id:
             patient_context = self.memory.get_patient_context(patient_id)
             chat_history = self.memory.get_recent_history(patient_id, limit=5)
+            patient_reports = self.memory.get_patient_reports(patient_id)
 
         # 3. KAG and RAG Retrieval
         kag_context = self.retrieve_knowledge_graph_context(query)
@@ -152,7 +172,8 @@ Provide a structured and educational answer:
             kag_context=kag_context,
             rag_context=rag_context,
             chat_history=chat_history,
-            patient_context=patient_context
+            patient_context=patient_context,
+            patient_reports=patient_reports
         )
 
         try:
