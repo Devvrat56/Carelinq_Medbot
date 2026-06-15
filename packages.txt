@@ -1,6 +1,2 @@
 tesseract-ocr
 poppler-utils
-libffi-dev
-zlib1g-dev
-libjpeg-dev
-libfreetype6-dev
